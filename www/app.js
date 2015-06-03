@@ -1,23 +1,7 @@
-var app = angular.module('NotifyApp',['ionic','ngCordova']);
+var app = angular.module('NotifyApp', ['ionic', 'ngCordova']);
 
 app.controller('NotifyCtrl', function ($scope, $ionicModal, $ionicPopup, $ionicPlatform, $cordovaLocalNotification, $cordovaCamera) {
     
-    $scope.takePicture = function () {
-        var options = {
-            quality: 50,
-            destinationType: Camera.DestinationType.DATA_URL,
-            sourceType: Camera.PictureSourceType.CAMERA
-        };
-
-        // udpate camera image directive
-        $cordovaCamera.getPicture(options).then(function (imageData) {
-            $scope.cameraimage = "data:image/jpeg;base64," + imageData;
-        }, function (err) {
-            console.log('Failed because: ');
-            console.log(err);
-        });
-    };
-
 	// Create and load the Modal
 	$ionicModal.fromTemplateUrl('new-notify.html', function(modal) {
 		$scope.notifyModal = modal;
@@ -104,4 +88,26 @@ app.controller('NotifyCtrl', function ($scope, $ionicModal, $ionicPopup, $ionicP
 	});
 	
 });
+
+app.controller('CameraCtrl', function ($scope, $cordovaCamera) {
+
+    $scope.takePicture = function () {
+        var options = {
+            quality: 50,
+            destinationType: Camera.DestinationType.DATA_URL,
+            sourceType: Camera.PictureSourceType.CAMERA
+        };
+
+        // udpate camera image directive
+        $cordovaCamera.getPicture(options).then(function (imageData) {
+            $scope.cameraimage = "data:image/jpeg;base64," + imageData;
+        }, function (err) {
+            console.log('Failed because: ');
+            console.log(err);
+        });
+    };
+
+});
+
+
 

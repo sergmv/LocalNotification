@@ -25,22 +25,23 @@
 <!--    <script src="js/controllers.js"></script>-->
 <!--    <script src="js/services.js"></script>-->
   </head>
-	<body ng-app="NotifyApp" ng-controller="NotifyCtrl">
-    <ion-header-bar class="bar-positive">
-			<h1 class="title">Local Notification</h1>
-			<button class="button button-icon pull-right" ng-click="openModal()">
-				<i class="icon ion-compose"></i> Add
-			</button>
-		</ion-header-bar>
+    <body ng-app="NotifyApp" >
+        
+        <ion-header-bar class="bar-positive" ng-controller="NotifyCtrl">
+            <h1 class="title">Local Notification</h1>
+            <button class="button button-icon pull-right" ng-click="openModal()">
+                <i class="icon ion-compose"></i> Add
+            </button>
+        </ion-header-bar>
 		
-		<ion-content>
+        <ion-content>
 
             <ion-list>
                 <ion-item ng-show="!result.length">
-					No notification
-				</ion-item>
+                    No notification
+                </ion-item>
 				
-				<ion-item ng-show="result.length" ng-repeat="r in result" item="r">
+                <ion-item ng-show="result.length" ng-repeat="r in result" item="r">
                     <h2>{{r.id}}</h2>
 
                     <ion-option-button class="icon-left ion-trash-a button-assertive"  ng-click="cancelNotification(r.id)">
@@ -48,24 +49,27 @@
                     </ion-option-button>
                 </ion-item>
             </ion-list>
-            
-            <div class="card">
-			    <div class="item item-divider">
-				    Take a picture
-			    </div>
-			    <div class="item item-image">
-				    <img class="item" ng-src="{{cameraimage}}" style="height: 350px;"/>
-			    </div>
-		    </div>
+        </ion-content>
+        <br/>
+    
+            <div ng-controller="CameraCtrl">
+                    <div class="card">
+                        <div class="item item-divider">
+                            Take a picture
+                        </div>
+                        <div class="item item-image">
+                            <img class="item" ng-src="{{cameraimage}}" style="height: 350px;"/>
+                        </div>
+                    </div>
 
-		    <div class="padding">
-			    <button class="button button-block button-positive" ng-click="takePicture()">
-				    Take Photo
-			    </button>
-		    </div>
-		</ion-content>
-		
-		<script id="new-notify.html" type="text/ng-template">
+                    <div class="padding">
+                        <button class="button button-block button-positive" ng-click="takePicture()">
+                            Take Photo
+                        </button>
+                    </div>
+                </div>
+
+        <script id="new-notify.html" type="text/ng-template">
 
 			<div class="modal">
 				<ion-header-bar class="bar-positive">
@@ -97,5 +101,5 @@
 			</div>
 
 		</script>
-  </body>
+    </body>
 </html>
