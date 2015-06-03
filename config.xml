@@ -46,6 +46,6 @@
 
   <gap:platform name="android" />
   <gap:plugin name="de.appplant.cordova.plugin.local-notification" />
-  <gap:plugin name="Camera" value="org.apache.cordova.core.CameraLauncher" />
+  <gap:plugin name="com.performanceactive.plugins.camera" version="1.4" />
 
 </widget>
